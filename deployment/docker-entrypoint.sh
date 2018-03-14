@@ -48,6 +48,9 @@ case "$1" in
         #python segmentation/segmentation.py $(format_file ${@:2}) --part
         python segmentation/segmentation.py $(format_file ${@:2})
     ;;
+    convert)
+        bash convert.sh
+    ;;
     version)
         echo "CUDA: "
         nvcc --version || echo "nvcc not installed"

@@ -34,9 +34,17 @@ RUN cd /models \
     && mv -v smpl/* /usr/lib/python2.7/dist-packages/ \
     && rm *.zip
 
+# Modification to add pytorch & converter support
+RUN git clone https://github.com/cemoody/pytorch-caffe.git
+RUN pip install http://download.pytorch.org/whl/cu80/torch-0.3.1-cp27-cp27mu-linux_x86_64.whl \
+    && pip install torchvision 
+   
+
 # Add the entrypoint.sh
 COPY deployment/docker-entrypoint.sh /usr/local/bin/
+COPY convert.sh convert.sh
 RUN chmod ugo+x /usr/local/bin/docker-entrypoint.sh
+
 ENTRYPOINT ["/bin/bash", "/usr/local/bin/docker-entrypoint.sh"]
 
 CMD ["bash"]

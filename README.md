@@ -81,3 +81,10 @@ $ docker tag demo2d3d_deeplab:latest lukin0110/up_deeplab:latest
 $ docker push lukin0110/up_caffe:latest
 $ docker push lukin0110/up_deeplab:latest
 ```
+
+## Convert caffe to pytorch
+
+`` 
+docker build . -t demo2d3d_caffe_pytorch:latest
+docker run -it -v "$(pwd)"/input:/input demo2d3d_caffe_pytorch:latest bash
+``
