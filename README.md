@@ -84,6 +84,9 @@ $ docker push lukin0110/up_deeplab:latest
 
 ## Convert caffe to pytorch
 
+- Remember to remove extra colon ':' after `input_shape` in prototexts
+- Add crop_param axis=0, offset=0 to prototext
+
 `` 
 docker build . -t demo2d3d_caffe_pytorch:latest
 docker run -it -v "$(pwd)"/input:/input demo2d3d_caffe_pytorch:latest bash
