@@ -4864,33 +4864,6 @@ layer {
   }
 }
 
-layer {
-  type: "Crop"
-  name: "crop1"
-  bottom: "res5c_up_pose_pose"
-  bottom: "res3d_pose_pose"
-  top: "res5c_up_posec"
-  crop_param {
-     axis: 0
-     offset: 0
-  }
-}
-
-layer {
-  bottom: "res3d_pose_pose"
-  bottom: "res5c_up_posec"
-  top: "fc_pose"
-  name: "fc_pose"
-  type: "Eltwise"
-}
-
-layer {
-  name: "prob"
-  type: "Sigmoid"
-  bottom: "fc_pose"
-  top: "prob"
-}
-
 #============================= Location refinement =============================
 
 layer {
@@ -4917,24 +4890,4 @@ layer {
 		pad: 0
 		stride: 1
 	}
-}
-
-layer {
-  type: "Crop"
-  name: "crop_locref"
-  bottom: "res5c_up_locref_pose"
-  bottom: "res3d_locref_pose"
-  top: "res5c_up_locrefc"
-  crop_param {
-     axis: 0
-     offset: 0
-  }
-}
-
-layer {
-	bottom: "res3d_locref_pose"
-	bottom: "res5c_up_locrefc"
-	top: "loc_pred"
-	name: "loc_pred"
-	type: "Eltwise"
 }
